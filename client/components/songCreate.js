@@ -14,8 +14,14 @@ class SongCreate extends Component {
 
         //reach out to backend server and add a new song to collection
         // mutation needed
+        this.props.mutate({
+            variables: {
+                title: this.state.title //take the value out of the input and take it to the title and then pass that into the mutation
+            }
+        })
     }
     render(){
+        
         return (
             <div>
                 <h3>Create A New Song</h3>
