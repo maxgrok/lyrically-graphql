@@ -9,6 +9,7 @@ import SongList from './components/SongList';
 import { ApolloProvider } from 'react-apollo'; // provider of data, injects data into react
 
 import App from './components/App';
+import SongCreate from './components/SongCreate';
 
 const client = new ApolloClient({}); //makes assumptions about how your backend is setup
 
@@ -18,6 +19,7 @@ const Root = () => {
     <Router history={hashHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={SongList} />
+        <Route path="song/new" component={SongCreate} />
       </Route>
     </Router>
   </ApolloProvider>
