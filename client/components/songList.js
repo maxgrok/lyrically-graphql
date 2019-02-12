@@ -7,7 +7,7 @@ class SongList extends Component{
     renderSongs(){
         return this.props.data.songs.map(song => {
             return (
-                <li>
+                <li key={song.id} className="collection-item">
                     {song.title}
                 </li>
             )
@@ -16,16 +16,19 @@ class SongList extends Component{
 
     render(){
         console.log(this.props);
-        
-        return (<div>
-            {this.renderSongs()}
-        </div>
+        if (this.props.data.loading){
+            return (<div>Loading...</div>)
+        }
+        return (<ul className="collection"> //styling from materialize.css that is already included
+        {this.renderSongs()}
+        </ul>
         )
     }
 }
 const query = gql`
 {
     songs{
+      id
       title
     }
   }
