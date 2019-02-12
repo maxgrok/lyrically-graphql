@@ -4,8 +4,10 @@ import ApolloClient from 'apollo-client'; //interacting with teh graphql server 
 
 import { ApolloProvider } from 'react-apollo'; // provider of data, injects data into react
 
+const client = new ApolloClient({}); //makes assumptions about how your backend is setup
+
 const Root = () => {
-  return <ApolloProvider>
+  return <ApolloProvider client={client}> 
     <div>Lyrical</div>
   </ApolloProvider>
 };
