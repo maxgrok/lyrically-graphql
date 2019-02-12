@@ -8,13 +8,14 @@ const schema = require('./schema/schema');
 const app = express();
 
 // Replace with your mongoLab URI
-const MONGO_URI = '';
+const MONGO_URI = "mongodb://root:miro2010@lyricaldb-shard-00-00-bec9g.mongodb.net:27017,lyricaldb-shard-00-01-bec9g.mongodb.net:27017,lyricaldb-shard-00-02-bec9g.mongodb.net:27017/test?ssl=true&replicaSet=LyricalDB-shard-0&authSource=admin&retryWrites=true";
+
 if (!MONGO_URI) {
   throw new Error('You must provide a MongoLab URI');
 }
 
 mongoose.Promise = global.Promise;
-mongoose.connect(MONGO_URI);
+mongoose.connect(MONGO_URI, {useMongoClient: true});
 mongoose.connection
     .once('open', () => console.log('Connected to MongoLab instance.'))
     .on('error', error => console.log('Error connecting to MongoLab:', error));
