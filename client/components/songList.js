@@ -3,6 +3,8 @@
 import React, {Component} from 'react';
 import gql from 'graphql-tag'; //helper that allows us to write queries within a component file
 import { graphql } from 'react-apollo'; // react-apollo provides bonding layer between graphql server with react side of application
+import { Link } from 'react-router';
+
 class SongList extends Component{
     renderSongs(){
         return this.props.data.songs.map(song => {
@@ -15,13 +17,21 @@ class SongList extends Component{
     }
 //styling from materialize.css that is already included
     render(){
-        console.log(this.props);
         if (this.props.data.loading){
             return (<div>Loading...</div>)
         }
-        return (<ul className="collection"> 
-        {this.renderSongs()}
-        </ul>
+            return (
+            <div>
+                <ul className="collection"> 
+                    {this.renderSongs()}
+                </ul>
+                <Link 
+                    to="songs/new" 
+                    className="btn-floating btn-large red right"
+                >
+                <i className="material-icons">add</i>
+                </Link>
+            </div>
         )
     }
 }
