@@ -13,13 +13,13 @@ class SongList extends Component{
             )
         });
     }
-
+//styling from materialize.css that is already included
     render(){
         console.log(this.props);
         if (this.props.data.loading){
             return (<div>Loading...</div>)
         }
-        return (<ul className="collection"> //styling from materialize.css that is already included
+        return (<ul className="collection"> 
         {this.renderSongs()}
         </ul>
         )
