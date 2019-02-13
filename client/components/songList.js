@@ -37,4 +37,14 @@ class SongList extends Component{
     }
 }
 
-export default graphql(query)(SongList);
+const mutation = gql`
+    mutation DeleteSong($id: String){
+        deleteSong(id: $id){
+            id
+        }
+    }
+`
+
+export default graphql(mutation){
+    graphql(query)(SongList) //syntax for adding multiple query/mutations for one component
+}

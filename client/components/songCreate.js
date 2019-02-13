@@ -14,7 +14,6 @@ class SongCreate extends Component {
     
     onSubmit(event){
         event.preventDefault();
-
         //reach out to backend server and add a new song to collection
         // mutation needed
         this.props.mutate({
