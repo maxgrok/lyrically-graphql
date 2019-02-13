@@ -1,0 +1,8 @@
+.collection-item {
+    display: flex;
+    justify-content: space-between; /* maximizes the space between each item  */
+}
+
+.material-icons{
+    cursor: pointer;
+}

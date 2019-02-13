@@ -8,7 +8,7 @@ import query from '../queries/fetchSongs';
 
 class SongList extends Component{
     onSongDelete(id){
-        this.props.mutate({ variables: {id})
+        this.props.mutate({ variables: {id}})
         .then(() => this.props.data.refetch()) //this.props.data is added automatically by apollo-react library, refetch function will automatically reexecute queries associated with the SongList component
     }
 
