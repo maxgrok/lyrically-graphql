@@ -8,9 +8,10 @@ import query from '../queries/fetchSongs';
 
 class SongList extends Component{
     onSongDelete(id){
-        this.props.mutate({ variables: {id}, refetchQueries: [{ query }] });
+        this.props.mutate({ variables: {id})
+        .then(() => this.props.data.refetch()) //this.props.data is added automatically by apollo-react library, refetch function will automatically reexecute queries associated with the SongList component
     }
-    
+
     renderSongs(){
         return this.props.data.songs.map(({id, title}) => {
             return (
@@ -54,6 +55,6 @@ const mutation = gql`
     }
 `
 
-export default graphql(mutation){
+export default graphql(mutation)(
     graphql(query)(SongList) //syntax for adding multiple query/mutations for one component
-}
+)
