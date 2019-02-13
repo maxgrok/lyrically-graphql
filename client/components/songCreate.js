@@ -47,3 +47,4 @@ const mutation = gql`
 `
 
 export default graphql(mutation)(SongCreate);;
+//typical component inside of graphql component
