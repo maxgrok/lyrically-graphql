@@ -19,7 +19,6 @@ class LyricCreate extends Component{
             }
         })
         this.setState({content: " "}); //instantly clears the form input field after submiting
-
     }
 
     render(){

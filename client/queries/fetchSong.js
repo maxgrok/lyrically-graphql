@@ -5,6 +5,11 @@ export default gql `
         song(id: $id){
             id
             title
+            lyrics{
+                id  
+                content
+            }
         }
     }
 `
+//need the id of the lyrics for the key property for react list items
