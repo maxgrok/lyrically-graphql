@@ -17,9 +17,9 @@ class LyricCreate extends Component{
                 content: this.state.content, 
                 songId: this.props.songId
             },
-            refetchQueries: [{ fetchSong }]
         })
         this.setState({content: " "}); //instantly clears the form input field after submiting
+
     }
 
     render(){
@@ -37,6 +37,7 @@ mutation AddLyricToSong($content: String, $songId: ID){
     addLyricToSong(content:$content, songId:$songId){
     id
     lyrics{
+      id
       content
     }
   }
