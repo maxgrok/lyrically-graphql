@@ -34,4 +34,4 @@ mutation LikeLyric($id: ID!){
     }
   }
 `
-export default LyricList;
+export default graphql(mutation)(LyricList);
