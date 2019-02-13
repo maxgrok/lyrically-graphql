@@ -1,19 +1,33 @@
 import React, {Component} from 'react';
-import gql from 'graph-tag';
+import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 class LyricList extends Component{
-    onLike(id){
-        console.log(id)
+    onLike(id, likes){
+        this.props.mutate({
+            variables: {id},
+            optimisticResponse: { 
+                __typename: "Mutation", 
+                likeLyric:{
+                    id,
+                    __typename: "LyricType",
+                    likes: likes + 1 //what we believe will happen, likes will add 1 to the UI
+                }
+            }
+        })
     }
     renderLyrics(){
-        return this.props.lyrics.map(({id, content}) =>{
+        return this.props.lyrics.map(({id, content, likes}) =>{
             return (
                 <li key={id} className="collection-item">{content}
-                <i 
-                className="material-icons"
-                onClick={(event)=>this.onLike(id)
-                    //needs to know the id of the lyric to like
-                }>thumb_up</i>
+                    <div className="vote-box">
+                    {likes} 
+                        <i 
+                        className="material-icons"
+                        onClick={(event)=>this.onLike(id, likes)
+                            //needs to know the id of the lyric to like
+                        }>thumb_up</i>
+                       
+                    </div>
                 </li>
             );
         })
