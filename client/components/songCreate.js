@@ -18,11 +18,9 @@ class SongCreate extends Component {
         //reach out to backend server and add a new song to collection
         // mutation needed
         this.props.mutate({
-            variables: {
-                title: this.state.title,
-                refetchQueries: [{ query }]
-            }
-        }).then(() => hashHistory.push('/'); //keeping track of history of user navigation
+            variables: { title: this.state.title},
+            refetchQueries: [{ query }]
+        }).then(() => hashHistory.push('/')); //keeping track of history of user navigation
     }
     render(){
         return (
