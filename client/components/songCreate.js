@@ -19,12 +19,10 @@ class SongCreate extends Component {
         // mutation needed
         this.props.mutate({
             variables: {
-                title: this.state.title, //take the value out of the input and take it to the title and then pass that into the mutation
-                refetchQueries: [{ query }] //refetches queries after the mutation has been successfully completed
+                title: this.state.title,
+                refetchQueries: [{ query }]
             }
-        }).then(()=>{
-            hashHistory.push('/') //keeping track of history of user navigation
-        });
+        }).then(() => hashHistory.push('/'); //keeping track of history of user navigation
     }
     render(){
         return (
