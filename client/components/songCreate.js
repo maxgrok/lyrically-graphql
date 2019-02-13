@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo'; 
 import {Link, hashHistory } from 'react-router';
+import query from '../queries/fetchSongs';
+
 class SongCreate extends Component {
     constructor(props){
         super(props);
@@ -18,7 +20,7 @@ class SongCreate extends Component {
         this.props.mutate({
             variables: {
                 title: this.state.title //take the value out of the input and take it to the title and then pass that into the mutation
-                refetchQueries: [{ }] //refetches queries after the mutation has been successfully completed
+                refetchQueries: [{ query }] //refetches queries after the mutation has been successfully completed
             }
         })
         .then(()=>{
