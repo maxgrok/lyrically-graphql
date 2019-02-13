@@ -13,7 +13,9 @@ import App from './components/App';
 import SongCreate from './components/SongCreate';
 import SongDetail from './components/SongDetail';
 
-const client = new ApolloClient({}); //makes assumptions about how your backend is setup
+const client = new ApolloClient({
+  dataIdFromObject: o => o.id // o short for object, this piece of config takes every single piece of data fetched by apollo backend and runs it through this function, result used to identify the piece of data inside of apollo client
+}); //makes assumptions about how your backend is setup
 
 const Root = () => {
   /// wrapping router so it's better to put apollo provider on the outside

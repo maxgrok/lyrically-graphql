@@ -16,7 +16,8 @@ class LyricCreate extends Component{
             variables: {
                 content: this.state.content, 
                 songId: this.props.songId
-            }
+            },
+            refetchQueries: [{ fetchSong }]
         })
         this.setState({content: " "}); //instantly clears the form input field after submiting
     }
