@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo'; 
+import {Link, hashHistory } from 'react-router';
 class SongCreate extends Component {
     constructor(props){
         super(props);
@@ -17,12 +18,17 @@ class SongCreate extends Component {
         this.props.mutate({
             variables: {
                 title: this.state.title //take the value out of the input and take it to the title and then pass that into the mutation
+                refetchQueries: [{ }] //refetches queries after the mutation has been successfully completed
             }
+        })
+        .then(()=>{
+            hashHistory.push('/') //keeping track of history of user navigation
         })
     }
     render(){
         return (
             <div>
+                <Link to="/">Back</Link>
                 <h3>Create A New Song</h3>
                 <form onSubmit={this.onSubmit.bind(this)}>
                     <label>Song Title: </label>
